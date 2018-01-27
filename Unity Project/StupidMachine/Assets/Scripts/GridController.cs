@@ -14,7 +14,31 @@ public class GridController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GenerateGridHardCode();
+		GenerateGrid();
+	}
+
+	public void DestroyGrid()
+	{
+		DestroyByTag("GearHolder");
+		DestroyByTag("GridFinish");
+		DestroyByTag("GridObject");
+		DestroyByTag("GridStart");
+	}
+
+	public void DestroyByTag(string tag)
+	{
+		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag (tag);
+
+		for(var i = 0 ; i < gameObjects.Length ; i ++)
+		{
+			Destroy(gameObjects[i]);
+		}
+	}
+
+	public void GenerateNewGrid()
+	{
+		DestroyGrid ();
+		GenerateGrid ();
 	}
 
 	void GenerateGrid()
@@ -23,11 +47,30 @@ public class GridController : MonoBehaviour {
 			bool columnWithGrid = false;
 			for (int column = 0; column < numberOfColumns; column++) {
 				Vector3 spawnPosition = new Vector3(row,column , 0);
-				if (!columnWithGrid && column == Random.Range (column, numberOfColumns)) {
-					SpawnGearPlaceHolder (spawnPosition);
-					columnWithGrid = true;
+				if (column == 0 && row == 0) {
+					SpawnStart (spawnPosition);
 				} else {
-					SpawnGridPlaceHolder (spawnPosition);
+					//Last Column
+					if (row == numberOfRows-1) {
+						if (column % 2 == 0) {
+							SpawnFinish (spawnPosition);
+						} else {
+							if (!columnWithGrid && column == Random.Range (column, numberOfColumns)) {
+								SpawnGearPlaceHolder (spawnPosition);
+								columnWithGrid = true;
+							} else {
+								SpawnGridPlaceHolder (spawnPosition);
+							}
+						}
+					} else {
+						if (!columnWithGrid && column == Random.Range (column, numberOfColumns)) {
+							SpawnGearPlaceHolder (spawnPosition);
+							columnWithGrid = true;
+						} else {
+							SpawnGridPlaceHolder (spawnPosition);
+						}
+					}
+
 				}
 			}
 		}
@@ -35,7 +78,12 @@ public class GridController : MonoBehaviour {
 
 	void SpawnGridPlaceHolder(Vector3 spawnPosition)
 	{
-		GameObject bPrefab = Instantiate (objGridPlaceholder, spawnPosition, Quaternion.identity) as GameObject;
+		int wildCard = Random.Range (0, 2);
+		if (wildCard == 1) {
+			GameObject bPrefab = Instantiate (objGridPlaceholder, spawnPosition, Quaternion.identity) as GameObject;
+		} else {
+			SpawnGearPlaceHolder (spawnPosition);
+		}
 	}
 
 	void SpawnGearPlaceHolder(Vector3 spawnPosition)
@@ -76,11 +124,5 @@ public class GridController : MonoBehaviour {
 		spawnPosition= new Vector3(2,-2 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
 
-
-
-
-
 	}
-	
-	
 }

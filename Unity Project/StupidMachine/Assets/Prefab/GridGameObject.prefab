@@ -55,5 +55,7 @@ MonoBehaviour:
     type: 2}
   objGearPlaceHolder: {fileID: 1933878916052624, guid: 6a0a01cdad3714ef1877a5fa5bbf90c7,
     type: 2}
-  numberOfRows: 4
-  numberOfColumns: 4
+  objStart: {fileID: 1884462244080370, guid: 0e797023ec42e4ebfa61288eaa8867cf, type: 2}
+  objFinish: {fileID: 1152865749193722, guid: 8aa4bd2ce4b26477c9afa8f52cab6747, type: 2}
+  numberOfRows: 5
+  numberOfColumns: 5
