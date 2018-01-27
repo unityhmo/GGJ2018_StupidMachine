@@ -10,6 +10,7 @@ TagManager:
   - GridStart
   - GearController
   - Pivot
+  - Gear
   layers:
   - Default
   - TransparentFX

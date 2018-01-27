@@ -86,6 +86,7 @@ public class GearController : MonoBehaviour
                 transform.position.z
             );
             _target.transform.position = newPosition;
+
         }
     }
 
@@ -106,6 +107,7 @@ public class GearController : MonoBehaviour
         {
             _selectedPivot.GetComponent<Pivot>().SetISelected(false);
             _selectedPivot = null;
+
         }
     }
 

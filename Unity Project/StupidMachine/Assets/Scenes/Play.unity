@@ -150,11 +150,67 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4231510543793338, guid: cf433cc781d6f4b74b67d9795a88cde6, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114068206498159704, guid: cf433cc781d6f4b74b67d9795a88cde6,
+        type: 2}
+      propertyPath: objGearPlaceHolder
+      value: 
+      objectReference: {fileID: 1019771921238722, guid: dce189a27bb2248aa91e73a29d8ee078,
+        type: 2}
+    - target: {fileID: 114068206498159704, guid: cf433cc781d6f4b74b67d9795a88cde6,
+        type: 2}
+      propertyPath: objGear
+      value: 
+      objectReference: {fileID: 1198950139770032, guid: c215d9861d94343539f2508319d15d97,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf433cc781d6f4b74b67d9795a88cde6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &371722356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 371722358}
+  - component: {fileID: 371722357}
+  m_Layer: 0
+  m_Name: GearController
+  m_TagString: GearController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &371722357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371722356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447cf6afb92974474bed625f59f8f6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivots:
+  - {fileID: 0}
+  - {fileID: 0}
+  _selectedPivot: {fileID: 0}
+--- !u!4 &371722358
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371722356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &429162886 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114068206498159704, guid: cf433cc781d6f4b74b67d9795a88cde6,
@@ -659,5 +715,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
