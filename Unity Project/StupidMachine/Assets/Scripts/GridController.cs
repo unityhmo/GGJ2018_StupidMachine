@@ -6,6 +6,9 @@ public class GridController : MonoBehaviour {
 
 	public GameObject objGridPlaceholder;
 	public GameObject objGearPlaceHolder;
+	public GameObject objStart;
+	public GameObject objFinish;
+
 	public int numberOfRows;
 	public int numberOfColumns;
 
@@ -39,17 +42,25 @@ public class GridController : MonoBehaviour {
 	{
 		GameObject bPrefab = Instantiate (objGearPlaceHolder, spawnPosition, Quaternion.identity) as GameObject;
 	}
+
+	void SpawnStart(Vector3 spawnPosition)
+	{
+		GameObject bPrefab = Instantiate (objStart, spawnPosition, Quaternion.identity) as GameObject;
+	}
+
+	void SpawnFinish(Vector3 spawnPosition)
+	{
+		GameObject bPrefab = Instantiate (objFinish, spawnPosition, Quaternion.identity) as GameObject;
+	}
+
 	void GenerateGridHardCode()
 	{
-		int arreglador = 3;
 		Vector3 spawnPosition = new Vector3(0,0 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
 		spawnPosition= new Vector3(0,-1 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
 		spawnPosition= new Vector3(0,-2 , 0);
-		SpawnGearPlaceHolder (spawnPosition);
-		spawnPosition= new Vector3(0,-3 , 0);
-		SpawnGridPlaceHolder (spawnPosition);
+		SpawnFinish (spawnPosition);
 
 		spawnPosition = new Vector3(1,0 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
@@ -57,26 +68,16 @@ public class GridController : MonoBehaviour {
 		SpawnGearPlaceHolder (spawnPosition);
 		spawnPosition= new Vector3(1,-2 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
-		spawnPosition= new Vector3(1,-3 , 0);
-		SpawnGearPlaceHolder (spawnPosition);
 
 		spawnPosition = new Vector3(2,0 , 0);
-		SpawnGearPlaceHolder (spawnPosition);
+		SpawnStart (spawnPosition);
 		spawnPosition= new Vector3(2,-1 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
 		spawnPosition= new Vector3(2,-2 , 0);
-		SpawnGearPlaceHolder (spawnPosition);
-		spawnPosition= new Vector3(2,-3 , 0);
 		SpawnGridPlaceHolder (spawnPosition);
 
-		spawnPosition = new Vector3(3,0 , 0);
-		SpawnGridPlaceHolder (spawnPosition);
-		spawnPosition= new Vector3(3,-1 , 0);
-		SpawnGearPlaceHolder (spawnPosition);
-		spawnPosition= new Vector3(3,-2 , 0);
-		SpawnGridPlaceHolder (spawnPosition);
-		spawnPosition= new Vector3(3,-3 , 0);
-		SpawnGearPlaceHolder (spawnPosition);
+
+
 
 
 	}
