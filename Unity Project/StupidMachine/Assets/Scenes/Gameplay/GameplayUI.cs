@@ -1,36 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Gamestrap
 {
     public class GameplayUI : MonoBehaviour
     {
+        [SerializeField] private Text _levelText;
 
-        public GameObject pausePanel;
+        public GameObject _pausePanel;
 
-        private bool pause;
+        private bool _isPaused;
 
+        private void Start()
+        {
+            _levelText.text = GameManager.Instance.LevelSelected.ToString();
+        }
 
         /// <summary>
         /// It activates the pause animation in the pause panel
         /// </summary>
-        public bool Pause
+        public bool IsPaused
         {
-            get { return pause; }
+            get { return _isPaused; }
             set
             {
-                pause = value;
+                _isPaused = value;
 
-                if (pause)
+                if (_isPaused)
                 {
-                    pausePanel.GetComponent<Animator>().SetBool("Visible", true);
+                    _pausePanel.GetComponent<Animator>().SetBool("Visible", true);
                 }
                 else
                 {
-                    pausePanel.GetComponent<Animator>().SetBool("Visible", false);
+                    _pausePanel.GetComponent<Animator>().SetBool("Visible", false);
                 }
             }
         }
-
     }
 }
