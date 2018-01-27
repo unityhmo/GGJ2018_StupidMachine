@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class Pivot : MonoBehaviour
 {
-    [SerializeField] private bool isSelected;
+    [SerializeField] private bool _isSelected;
 
-    // Use this for initialization
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (isSelected)
+        if (_isSelected)
         {
             transform.GetComponent<Renderer>().material.SetColor("_TintColor", Color.red);
         }
@@ -22,6 +16,6 @@ public class Pivot : MonoBehaviour
 
     public void SetISelected(bool newStatus)
     {
-        isSelected = newStatus;
+        _isSelected = newStatus;
     }
 }

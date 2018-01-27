@@ -6,7 +6,6 @@ public class Gear : MonoBehaviour
 {
     private GearController _gearController;
 
-
     private void Start()
     {
         _gearController = GameObject.FindGameObjectWithTag("GearController").GetComponent<GearController>();
