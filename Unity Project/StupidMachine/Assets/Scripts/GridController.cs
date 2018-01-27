@@ -8,6 +8,7 @@ public class GridController : MonoBehaviour {
 	public GameObject objGearPlaceHolder;
 	public GameObject objStart;
 	public GameObject objFinish;
+	public GameObject objGear;
 
 	public int numberOfRows;
 	public int numberOfColumns;
@@ -15,6 +16,15 @@ public class GridController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GenerateGrid();
+		GenerateGears ();
+	}
+
+	void GenerateGears(){
+
+		for (int x = 0; x < numberOfColumns; x++) {
+			Vector3 spawnPosition = new Vector3(x+x*(1+0.2f)-3,-3, 0);
+			SpawnGear (spawnPosition);
+		}
 	}
 
 	public void DestroyGrid()
@@ -23,6 +33,7 @@ public class GridController : MonoBehaviour {
 		DestroyByTag("GridFinish");
 		DestroyByTag("GridObject");
 		DestroyByTag("GridStart");
+		DestroyByTag("Pivot");
 	}
 
 	public void DestroyByTag(string tag)
@@ -46,7 +57,7 @@ public class GridController : MonoBehaviour {
 		for (int row = 0; row < numberOfRows; row++) {
 			bool columnWithGrid = false;
 			for (int column = 0; column < numberOfColumns; column++) {
-				Vector3 spawnPosition = new Vector3(row,column , 0);
+				Vector3 spawnPosition = new Vector3(row+row*(0.5f),column+column*(0.5f) , 0);
 				if (column == 0 && row == 0) {
 					SpawnStart (spawnPosition);
 				} else {
@@ -89,11 +100,17 @@ public class GridController : MonoBehaviour {
 	void SpawnGearPlaceHolder(Vector3 spawnPosition)
 	{
 		GameObject bPrefab = Instantiate (objGearPlaceHolder, spawnPosition, Quaternion.identity) as GameObject;
+		bPrefab.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
 	}
 
 	void SpawnStart(Vector3 spawnPosition)
 	{
 		GameObject bPrefab = Instantiate (objStart, spawnPosition, Quaternion.identity) as GameObject;
+	}
+
+	void SpawnGear(Vector3 spawnPosition)
+	{
+		GameObject bPrefab = Instantiate (objGear, spawnPosition, Quaternion.identity) as GameObject;
 	}
 
 	void SpawnFinish(Vector3 spawnPosition)
