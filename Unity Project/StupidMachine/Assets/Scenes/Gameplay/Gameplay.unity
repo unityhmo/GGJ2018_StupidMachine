@@ -555,8 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fdc25dde9c24d4fa031b57f7105046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameMusic: {fileID: 8300000, guid: 6e75614662f3b4f2cac8da31d7ab9fa6, type: 3}
-  _gearClick: {fileID: 8300000, guid: 2f839407a232448dc88f8f0007914e89, type: 3}
+  _gearClick: {fileID: 8300000, guid: 47217fd20d323476aab7596469449293, type: 3}
 --- !u!1 &219165502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418381499}
   - component: {fileID: 418381498}
+  - component: {fileID: 418381500}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1485,6 +1485,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &418381500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418381497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47edfdf657ab449e48ebfbe8ff82aa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameMusic: {fileID: 8300000, guid: 68581dd09d2c341bfbe4603872d3d431, type: 3}
+  _winGameMusic: {fileID: 8300000, guid: fe8f01f99173b471faaba2df0ad2934d, type: 3}
+  _loseGameMusic: {fileID: 8300000, guid: c7a1914c3ff5b46eea4209013f544cdd, type: 3}
 --- !u!1 &431354936
 GameObject:
   m_ObjectHideFlags: 0
@@ -5579,6 +5593,7 @@ GameObject:
   - component: {fileID: 1862990788}
   - component: {fileID: 1862990787}
   - component: {fileID: 1862990789}
+  - component: {fileID: 1862990790}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -5592,7 +5607,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1862990786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b2e69e67b01f794782b07f9ca24c87e, type: 3}
   m_Name: 
@@ -5618,13 +5633,27 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1862990786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4347f7b20a10a4c5a9e06c80c0a3496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _levelSelected: 0
   _levels: []
+--- !u!114 &1862990790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1862990786}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47edfdf657ab449e48ebfbe8ff82aa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameMusic: {fileID: 8300000, guid: 68581dd09d2c341bfbe4603872d3d431, type: 3}
+  _winGameMusic: {fileID: 0}
+  _loseGameMusic: {fileID: 0}
 --- !u!1 &1889114156
 GameObject:
   m_ObjectHideFlags: 0

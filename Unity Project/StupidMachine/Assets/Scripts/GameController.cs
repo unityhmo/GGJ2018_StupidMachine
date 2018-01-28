@@ -28,11 +28,15 @@ public class GameController : MonoBehaviour {
 
 	bool stopTime;
 
+	private SceneSounds _sceneSounds;
+	private bool hasFinished;
+
 	void Start () {
 		ResumeTime ();
 		SetWinItem ();
 		InvokeRepeating ("HandleTime", 1, 1);
 		CheckAllGoodPivots ();
+		_sceneSounds = GetComponent<SceneSounds>();
 	}
 
 	void CheckAllGoodPivots()
@@ -167,12 +171,23 @@ public class GameController : MonoBehaviour {
 		LoseCanvas.gameObject.SetActive (false);
 
 		StopTime ();
+
+		if (!hasFinished)
+		{
+			_sceneSounds.PlayWinGameMusic();
+			hasFinished = true;
+		}
 	}
 
 	public void LoseGame(){
 		WinCanvas.gameObject.SetActive (false);
 		LoseCanvas.gameObject.SetActive (true);
 		StopTime ();
+		if (!hasFinished)
+		{
+			_sceneSounds.PlayLoseGameMusic();
+			hasFinished = true;
+		}
 	}
 
 	public void DropItem(){
