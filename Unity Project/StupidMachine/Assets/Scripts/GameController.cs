@@ -20,10 +20,71 @@ public class GameController : MonoBehaviour {
 
 	bool timesUp;
 
+	public int numberOfGoodPivots;
+	public bool AllPivotsOnSequence;
+	public List<int> listPosition;
+
 	void Start () {
 		ResumeTime ();
 		SetWinItem ();
 		InvokeRepeating ("HandleTime", 1, 1);
+		CheckAllGoodPivots ();
+	}
+
+	void CheckAllGoodPivots()
+	{
+		GameObject[] arrayPivots = GameObject.FindGameObjectsWithTag("Pivot");
+		if (arrayPivots != null) {
+			
+			foreach (GameObject objPivot in arrayPivots) {
+				if (objPivot.GetComponent<Pivot> ().position > 0) {
+					numberOfGoodPivots++;
+				}
+			}
+		}
+	}
+
+	void ValidatePivotsSequence()
+	{
+
+		GameObject[] arrayPivots = GameObject.FindGameObjectsWithTag("Pivot");
+		if (arrayPivots != null) {
+			int counter = 0;
+			foreach (GameObject objPivot in arrayPivots) {
+				if (objPivot.GetComponent<Pivot> ().position > 0) {
+					if (objPivot.GetComponent<Pivot> ().IsBusy) {
+						bool hasThisValue = false;
+						foreach(int item in listPosition)
+						{
+							if (item==objPivot.GetComponent<Pivot> ().position)
+								hasThisValue = true;
+						}
+						if (!hasThisValue) {
+							
+							listPosition.Add (objPivot.GetComponent<Pivot> ().position);
+						}
+						counter++;
+					}
+				}
+			}
+			if (counter >= numberOfGoodPivots) {
+				listPosition.Sort ();
+				int position = 1;
+
+				foreach (int value in listPosition) {
+					Debug.Log ("Position: " + position + " value: " + value);
+					if (value == position) {
+						AllPivotsOnSequence = true;
+					}
+					position++;
+				}
+			}
+			counter = 0;
+
+			if (AllPivotsOnSequence) {
+				WinGame ();
+			}
+		}
 	}
 
 	void HandleTime()
@@ -69,6 +130,7 @@ public class GameController : MonoBehaviour {
 
 	void Update () {
 		SetTimeText ();
+		ValidatePivotsSequence ();
 	}
 
 	public void WinGame(){
