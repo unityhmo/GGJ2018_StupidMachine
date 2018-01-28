@@ -14,16 +14,16 @@ public class GridController : MonoBehaviour {
 	public int numberOfColumns;
 
 	public List<Level> levels;
-	// Use this for initialization
-	void Start () {
-		levels=GameManager.Instance._levels;
+	
+	private Level currentLevel;
+	
+	void Start(){
+		currentLevel = GameManager.Instance._levels[GameManager.Instance.LevelSelected];
 		GenerateGrid();
-		GenerateGears ();
-
+		GenerateGears();
 	}
 
 	void GenerateGears(){
-
 		for (int x = 0; x < numberOfColumns; x++) {
 			Vector3 spawnPosition = new Vector3(x+x*(1+0.2f)-3,-3, 0);
 			SpawnGear (spawnPosition);
@@ -57,15 +57,16 @@ public class GridController : MonoBehaviour {
 
 	void GenerateGrid()
 	{
-		Level currentLevel = levels [0];
 		numberOfColumns = currentLevel.blocks.Count / currentLevel.rowSize;
 		numberOfRows = currentLevel.rowSize;
 		int row = 0;
 		int column = 0;
 		int counter = 0;
+		Vector2 offset = currentLevel.offset != null ? currentLevel.offset : new Vector2(0, 0);
 
 		foreach (int valor in currentLevel.blocks) {
-			Vector3 spawnPosition = new Vector3(row+row*(0.5f),column+column*(0.5f) , 0);
+			Vector3 spawnPosition =
+				new Vector3(row + currentLevel.offset.x * (0.5f), column + currentLevel.offset.y * (0.5f), 0);
 			row++;
 			if (row == numberOfColumns) {
 				row = 0;
