@@ -11,6 +11,7 @@ public class Gear : MonoBehaviour
     [SerializeField] private bool _isStatic;
 
     public bool canRotate;
+	public bool isOnSequence;
 
     private void Start()
     {
@@ -20,10 +21,24 @@ public class Gear : MonoBehaviour
 
     public void Update()
     {
+		if (isOnSequence) {
+			canRotate = true;
+		} else {
+			canRotate = false;
+		}
         if (canRotate)
         {
             transform.Rotate(Vector3.back * Time.deltaTime * 200);
         }
+		if (_selectedPivot != null) {
+			if (_selectedPivot.GetComponent<Pivot> ().pivotOnSequence) {
+				isOnSequence = true;
+			} else {
+				if (!gameObject.name.Contains ("GridStart")) {
+					isOnSequence = false;
+				}
+			}
+		}
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -34,6 +49,9 @@ public class Gear : MonoBehaviour
             !collider.gameObject.GetComponent<Pivot>().IsBusy)
         {
             _selectedPivot = collider.gameObject;
+			if (collider.gameObject.GetComponent<Pivot> ().pivotOnSequence) {
+				isOnSequence = true;
+			}
         }
     }
 
@@ -48,6 +66,9 @@ public class Gear : MonoBehaviour
             {
                 _selectedPivot = null;
             }
+			if (collider.gameObject.GetComponent<Pivot> ().pivotOnSequence) {
+				isOnSequence = true;
+			} 
         }
     }
 
@@ -80,6 +101,7 @@ public class Gear : MonoBehaviour
 
             _selectedPivot.GetComponent<Pivot>().IsBusy = true;
             _isPlacedInGrid = true;
+
         }
     }
 
