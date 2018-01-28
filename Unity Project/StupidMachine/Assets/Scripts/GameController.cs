@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour {
 	public bool AllPivotsOnSequence;
 	public List<int> listPosition;
 
+	public List<int> positionsOnSequence;
+
 	void Start () {
 		ResumeTime ();
 		SetWinItem ();
@@ -60,17 +62,38 @@ public class GameController : MonoBehaviour {
 								hasThisValue = true;
 						}
 						if (!hasThisValue) {
-							
 							listPosition.Add (objPivot.GetComponent<Pivot> ().position);
+						} else {
+							listPosition.Remove (objPivot.GetComponent<Pivot> ().position);
+							objPivot.GetComponent<Pivot> ().pivotOnSequence = false;
+							AllPivotsOnSequence = false;
 						}
+
 						counter++;
+						//objPivot.GetComponent<Pivot> ().pivotOnSequence = true;
+						listPosition.Sort ();
+						int currPosition = 1;
+						bool isOnSequence = false;;
+						foreach (int values in listPosition) {
+							if (values == currPosition) {
+								isOnSequence = true;
+							} else {
+								isOnSequence = false;
+								break;
+							}
+							currPosition++;
+						}
+						objPivot.GetComponent<Pivot> ().pivotOnSequence = isOnSequence;
 					}
 				}
 			}
+
+	
+
+
 			if (counter >= numberOfGoodPivots) {
 				listPosition.Sort ();
 				int position = 1;
-
 				foreach (int value in listPosition) {
 					Debug.Log ("Position: " + position + " value: " + value);
 					if (value == position) {
@@ -155,7 +178,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void StopTime(){
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
 	}
 
 	public void ResumeTime(){

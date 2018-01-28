@@ -6,6 +6,7 @@ public class Pivot : MonoBehaviour
 {
     [SerializeField] private bool _isBusy;
 	public int position=-1;
+	public bool pivotOnSequence;
 
     public bool IsBusy
     {

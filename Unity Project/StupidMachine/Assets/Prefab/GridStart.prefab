@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isStatic: 1
   canRotate: 1
+  isOnSequence: 1
 --- !u!135 &135371897286998590
 SphereCollider:
   m_ObjectHideFlags: 1
