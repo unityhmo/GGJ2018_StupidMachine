@@ -99,7 +99,7 @@ public class GameController : MonoBehaviour {
 				listPosition.Sort ();
 				int position = 1;
 				foreach (int value in listPosition) {
-					Debug.Log ("Position: " + position + " value: " + value);
+//					Debug.Log ("Position: " + position + " value: " + value);
 					if (value == position) {
 						AllPivotsOnSequence = true;
 					}
@@ -141,9 +141,9 @@ public class GameController : MonoBehaviour {
 			zeroSeconds = "0";
 		}
 		if (!timesUp) {
-			txtTime.text = "Time: " + zeroMinutes + minutes.ToString () + ":" + zeroSeconds + seconds.ToString ();
+			txtTime.text = "Time " + zeroMinutes + minutes.ToString () + ":" + zeroSeconds + seconds.ToString ();
 		} else {
-			txtTime.text = "Time: 00:00";
+			txtTime.text = "Time 00:00";
 		}
 	}
 
