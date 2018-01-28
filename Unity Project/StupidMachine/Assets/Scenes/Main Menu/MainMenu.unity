@@ -2150,8 +2150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209fb12a8b72d49039e3419f0d9f9f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameMusic: {fileID: 8300000, guid: 6e75614662f3b4f2cac8da31d7ab9fa6, type: 3}
-  _gearClick: {fileID: 8300000, guid: 2f839407a232448dc88f8f0007914e89, type: 3}
 --- !u!4 &2092440562
 Transform:
   m_ObjectHideFlags: 0
