@@ -12,6 +12,7 @@ public class GearController : MonoBehaviour
     private Vector3 _screenPosition;
     private Vector3 _offset;
     private GearController _gearController;
+    private PlayerSounds _playerSounds;
 
     private void Start()
     {
@@ -23,6 +24,8 @@ public class GearController : MonoBehaviour
         {
             _pivots.Add(pivot);
         }
+
+        _playerSounds = GetComponent<PlayerSounds>();
     }
 
     private void Update()
@@ -58,6 +61,7 @@ public class GearController : MonoBehaviour
         {
             _isMouseDrag = false;
             _target.GetComponent<Gear>().EndMovement();
+            _playerSounds.PlayGearClickSound();
         }
 
         if (_isMouseDrag)
