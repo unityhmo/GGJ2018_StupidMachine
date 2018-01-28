@@ -33,6 +33,13 @@ public class GearController : MonoBehaviour
             _target = ReturnClickedObject(out hitInfo);
             if (_target != null && _target.layer == 9) // Gears
             {
+                Gear targetGear = _target.GetComponent<Gear>();
+                if (targetGear.IsStatic)
+                {
+                    return;
+                }
+
+                targetGear.StartMovement();
                 _isMouseDrag = true;
                 //Convert world position to screen position.
                 _screenPosition = Camera.main.WorldToScreenPoint(_target.transform.position);
@@ -42,10 +49,15 @@ public class GearController : MonoBehaviour
             }
         }
 
+        if (!_isMouseDrag)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             _isMouseDrag = false;
-            SetPositionOnSelectedPivot();
+            _target.GetComponent<Gear>().EndMovement();
         }
 
         if (_isMouseDrag)
@@ -72,47 +84,5 @@ public class GearController : MonoBehaviour
         }
 
         return target;
-    }
-
-    private void SetPositionOnSelectedPivot()
-    {
-        GameObject selectedPivot = _gearController.SelectedPivot;
-
-        if (selectedPivot != null)
-        {
-            Vector3 newPosition = new Vector3(
-                selectedPivot.transform.position.x,
-                selectedPivot.transform.position.y,
-                transform.position.z
-            );
-            _target.transform.position = newPosition;
-
-        }
-    }
-
-    public void SetSelectedPivot(Pivot pivot)
-    {
-        if (_selectedPivot != null)
-        {
-            _selectedPivot.GetComponent<Pivot>().SetISelected(false);
-        }
-
-        _selectedPivot = pivot.gameObject;
-        _selectedPivot.GetComponent<Pivot>().SetISelected(true);
-    }
-
-    public void CancelSelectedPivot(Pivot pivot)
-    {
-        if (_selectedPivot != null && _selectedPivot == pivot.gameObject)
-        {
-            _selectedPivot.GetComponent<Pivot>().SetISelected(false);
-            _selectedPivot = null;
-
-        }
-    }
-
-    public GameObject SelectedPivot
-    {
-        get { return _selectedPivot; }
     }
 }

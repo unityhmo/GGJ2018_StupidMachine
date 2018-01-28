@@ -110,6 +110,7 @@ public class GridController : MonoBehaviour {
 	void SpawnStart(Vector3 spawnPosition)
 	{
 		GameObject bPrefab = Instantiate (objStart, spawnPosition, Quaternion.identity) as GameObject;
+		bPrefab.GetComponent<Gear>().IsPlacedInGrid = true;
 	}
 
 	void SpawnGear(Vector3 spawnPosition)

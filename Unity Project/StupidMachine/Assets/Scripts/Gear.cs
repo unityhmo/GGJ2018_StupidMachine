@@ -5,45 +5,92 @@ using UnityEngine;
 public class Gear : MonoBehaviour
 {
     private GearController _gearController;
+    private GameObject _selectedPivot;
+    private Vector3 _originalPosition;
+    private bool _isPlacedInGrid;
+    [SerializeField] private bool _isStatic;
 
-	public bool canRotate;
+    public bool canRotate;
 
     private void Start()
     {
         _gearController = GameObject.FindGameObjectWithTag("GearController").GetComponent<GearController>();
+        _originalPosition = transform.position;
     }
 
-	public void Update(){
-		if (canRotate) {
-			transform.Rotate(Vector3.back * Time.deltaTime*200);
-		}
-	}
-
-    private void OnTriggerEnter(Collider other)
+    public void Update()
     {
-        if (other.gameObject.layer == 8) // Pivots
+        if (canRotate)
         {
-            Pivot pivot = other.gameObject.GetComponent<Pivot>();
-            _gearController.SetSelectedPivot(pivot);
+            transform.Rotate(Vector3.back * Time.deltaTime * 200);
         }
-		if (other.gameObject.layer == 9) // Gears
-		{
-			if (other.gameObject.GetComponent<Gear> ().canRotate == true) {
-				canRotate = true;
-			}
-		}
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (other.gameObject.layer == 8) // Pivots
+        // box collides with pivots
+        if (collider.GetType().Name.Equals("BoxCollider") &&
+            collider.gameObject.layer == 8 &&
+            !collider.gameObject.GetComponent<Pivot>().IsBusy)
         {
-            Pivot pivot = other.gameObject.GetComponent<Pivot>();
+            _selectedPivot = collider.gameObject;
+        }
+    }
 
-            if (pivot != null)
+    private void OnTriggerExit(Collider collider)
+    {
+        // box deal with pivots
+        if (collider.GetType().Name.Equals("BoxCollider") &&
+            collider.gameObject.layer == 8 &&
+            !_isPlacedInGrid)
+        {
+            if (_selectedPivot == collider.gameObject)
             {
-                _gearController.CancelSelectedPivot(pivot);
+                _selectedPivot = null;
             }
         }
+    }
+
+    public void StartMovement()
+    {
+        if (_selectedPivot != null)
+        {
+            _selectedPivot.GetComponent<Pivot>().IsBusy = false;
+        }
+    }
+
+    public void EndMovement()
+    {
+        if (_selectedPivot == null)
+        {
+            // restart position
+            Vector3 newPosition = new Vector3(_originalPosition.x, _originalPosition.y, _originalPosition.z);
+            transform.position = newPosition;
+            _isPlacedInGrid = false;
+        }
+        else
+        {
+            // move to selected pivot
+            Vector3 newPosition = new Vector3(
+                _selectedPivot.transform.position.x,
+                _selectedPivot.transform.position.y,
+                transform.position.z
+            );
+            transform.position = newPosition;
+
+            _selectedPivot.GetComponent<Pivot>().IsBusy = true;
+            _isPlacedInGrid = true;
+        }
+    }
+
+    public bool IsPlacedInGrid
+    {
+        get { return _isPlacedInGrid; }
+        set { _isPlacedInGrid = value; }
+    }
+
+    public bool IsStatic
+    {
+        get { return _isStatic; }
     }
 }

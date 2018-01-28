@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33012974575951394}
   - component: {fileID: 65014913183090788}
   - component: {fileID: 23120291098942420}
+  - component: {fileID: 114372959944461836}
   m_Layer: 0
   m_Name: GridFinish
   m_TagString: GridFinish
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114372959944461836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152865749193722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8541ac8550b4919abcda66e602e6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isStatic: 1
+  canRotate: 0

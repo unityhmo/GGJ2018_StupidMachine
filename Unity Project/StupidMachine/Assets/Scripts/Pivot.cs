@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class Pivot : MonoBehaviour
 {
-    [SerializeField] private bool _isSelected;
+    [SerializeField] private bool _isBusy;
 
-    void Update()
+    public bool IsBusy
     {
-        if (_isSelected)
-        {
-            transform.GetComponent<Renderer>().material.SetColor("_TintColor", Color.red);
-        }
-    }
-
-    public void SetISelected(bool newStatus)
-    {
-        _isSelected = newStatus;
+        get { return _isBusy; }
+        set { _isBusy = value; }
     }
 }
