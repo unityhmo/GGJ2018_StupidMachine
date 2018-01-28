@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4231510543793338}
   - component: {fileID: 114068206498159704}
+  - component: {fileID: 114414687556172320}
   m_Layer: 0
   m_Name: GridGameObject
-  m_TagString: Untagged
+  m_TagString: GearController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,9 +54,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objGridPlaceholder: {fileID: 1541040245530746, guid: dd4d34f220a0a4857ad2ecee38dbb9da,
     type: 2}
-  objGearPlaceHolder: {fileID: 1933878916052624, guid: 6a0a01cdad3714ef1877a5fa5bbf90c7,
+  objGearPlaceHolder: {fileID: 1019771921238722, guid: dce189a27bb2248aa91e73a29d8ee078,
     type: 2}
   objStart: {fileID: 1884462244080370, guid: 0e797023ec42e4ebfa61288eaa8867cf, type: 2}
   objFinish: {fileID: 1152865749193722, guid: 8aa4bd2ce4b26477c9afa8f52cab6747, type: 2}
+  objGear: {fileID: 1198950139770032, guid: c215d9861d94343539f2508319d15d97, type: 2}
   numberOfRows: 5
   numberOfColumns: 5
+  levels: []
+--- !u!114 &114414687556172320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252957094809914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447cf6afb92974474bed625f59f8f6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivots: []
+  _selectedPivot: {fileID: 0}

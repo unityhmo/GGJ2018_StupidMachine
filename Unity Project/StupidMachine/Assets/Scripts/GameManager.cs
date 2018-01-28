@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _levelSelected = 0;
 
     private static GameManager _instance;
-    private List<Level> _levels;
+    public List<Level> _levels;
 
     public static GameManager Instance
     {
@@ -44,8 +44,10 @@ public class GameManager : MonoBehaviour
     {
         List<Level> levels = new List<Level>();
 
-        levels.Add(new Level(3, new List<int>(new int[] {0, 0, 0, 0, 0, 0})));
-        levels.Add(new Level(4, new List<int>(new int[] {0, 0, 0, 0, 0, 0, 0, 0})));
+        levels.Add(new Level(3, new List<int>(new int[] {0, 0, 4, 3, 3, 3,1,3,3})));
+        levels.Add(new Level(3, new List<int>(new int[] {3, 2, 3, 3, 3, 3, 1, 3,4})));
+		levels.Add(new Level(4, new List<int>(new int[] {3, 3, 3, 4, 3, 3, 3, 0,1,3,3,2})));
+		levels.Add(new Level(3, new List<int>(new int[] {0, 2, 4, 0, 3, 3,1,3,3})));
 
         return levels;
     }

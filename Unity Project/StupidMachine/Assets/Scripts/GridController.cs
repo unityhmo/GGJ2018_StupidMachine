@@ -13,10 +13,13 @@ public class GridController : MonoBehaviour {
 	public int numberOfRows;
 	public int numberOfColumns;
 
+	public List<Level> levels;
 	// Use this for initialization
 	void Start () {
+		levels=GameManager.Instance._levels;
 		GenerateGrid();
 		GenerateGears ();
+
 	}
 
 	void GenerateGears(){
@@ -54,47 +57,48 @@ public class GridController : MonoBehaviour {
 
 	void GenerateGrid()
 	{
-		for (int row = 0; row < numberOfRows; row++) {
-			bool columnWithGrid = false;
-			for (int column = 0; column < numberOfColumns; column++) {
-				Vector3 spawnPosition = new Vector3(row+row*(0.5f),column+column*(0.5f) , 0);
-				if (column == 0 && row == 0) {
-					SpawnStart (spawnPosition);
-				} else {
-					//Last Column
-					if (row == numberOfRows-1) {
-						if (column % 2 == 0) {
-							SpawnFinish (spawnPosition);
-						} else {
-							if (!columnWithGrid && column == Random.Range (column, numberOfColumns)) {
-								SpawnGearPlaceHolder (spawnPosition);
-								columnWithGrid = true;
-							} else {
-								SpawnGridPlaceHolder (spawnPosition);
-							}
-						}
-					} else {
-						if (!columnWithGrid && column == Random.Range (column, numberOfColumns)) {
-							SpawnGearPlaceHolder (spawnPosition);
-							columnWithGrid = true;
-						} else {
-							SpawnGridPlaceHolder (spawnPosition);
-						}
-					}
+		Level currentLevel = levels [0];
+		numberOfColumns = currentLevel.blocks.Count / currentLevel.rowSize;
+		numberOfRows = currentLevel.rowSize;
+		int row = 0;
+		int column = 0;
+		int counter = 0;
 
-				}
+		foreach (int valor in currentLevel.blocks) {
+			Vector3 spawnPosition = new Vector3(row+row*(0.5f),column+column*(0.5f) , 0);
+			row++;
+			if (row == numberOfColumns) {
+				row = 0;
+				column--;
 			}
+			switch (valor)
+			{
+			case 0:
+				SpawnGridPlaceHolder (spawnPosition);
+				break;
+			case 1:
+				SpawnStart (spawnPosition);
+				break;
+			case 2:
+				SpawnFinish (spawnPosition);
+				break;
+			case 3:
+				SpawnGearPlaceHolder (spawnPosition);
+				break;
+			case 4:
+				SpawnFinish (spawnPosition); //< --- This is the finish that wins the game
+				break;
+			default:
+				SpawnGridPlaceHolder (spawnPosition);
+				break;
+			}
+			counter++;
 		}
 	}
 
 	void SpawnGridPlaceHolder(Vector3 spawnPosition)
 	{
-		int wildCard = Random.Range (0, 2);
-		if (wildCard == 1) {
-			GameObject bPrefab = Instantiate (objGridPlaceholder, spawnPosition, Quaternion.identity) as GameObject;
-		} else {
-			SpawnGearPlaceHolder (spawnPosition);
-		}
+		GameObject bPrefab = Instantiate (objGridPlaceholder, spawnPosition, Quaternion.identity) as GameObject;
 	}
 
 	void SpawnGearPlaceHolder(Vector3 spawnPosition)

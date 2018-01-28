@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
 	public int seconds;
 
 	bool timesUp;
+
 	void Start () {
 		ResumeTime ();
 		SetWinItem ();

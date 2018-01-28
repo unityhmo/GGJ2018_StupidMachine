@@ -15,6 +15,8 @@ namespace Gamestrap
         private void Start()
         {
             _levelText.text = GameManager.Instance.LevelSelected.ToString();
+
+
         }
 
         /// <summary>
