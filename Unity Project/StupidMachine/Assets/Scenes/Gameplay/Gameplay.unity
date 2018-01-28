@@ -302,6 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156669378}
   - component: {fileID: 156669379}
+  - component: {fileID: 156669380}
   m_Layer: 0
   m_Name: GearController
   m_TagString: GearController
@@ -339,6 +340,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _selectedPivot: {fileID: 0}
+--- !u!114 &156669380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156669377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fdc25dde9c24d4fa031b57f7105046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameMusic: {fileID: 8300000, guid: 6e75614662f3b4f2cac8da31d7ab9fa6, type: 3}
+  _gearClick: {fileID: 8300000, guid: 2f839407a232448dc88f8f0007914e89, type: 3}
 --- !u!1 &219165502
 GameObject:
   m_ObjectHideFlags: 0
@@ -4345,6 +4359,46 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1508481040}
+--- !u!1 &1561534511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1561534513}
+  - component: {fileID: 1561534512}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1561534512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561534511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209fb12a8b72d49039e3419f0d9f9f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1561534513
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561534511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.234306, y: -5.53094, z: 57.24298}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588109538
 GameObject:
   m_ObjectHideFlags: 0

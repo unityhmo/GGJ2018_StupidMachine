@@ -25,7 +25,8 @@ namespace Gamestrap
 
         public void PlayClick()
         {
-            GSAppExampleControl.Instance.LoadScene(ESceneNames.Levels);
+//            GSAppExampleControl.Instance.LoadScene(ESceneNames.Levels);
+            GSAppExampleControl.Instance.LoadScene(ESceneNames.Gameplay);
         }
 
         #region Settings Events
