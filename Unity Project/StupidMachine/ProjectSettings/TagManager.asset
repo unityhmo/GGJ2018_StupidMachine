@@ -11,6 +11,7 @@ TagManager:
   - GearController
   - Pivot
   - Gear
+  - ItemDroper
   layers:
   - Default
   - TransparentFX
