@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour {
 
 	public List<int> positionsOnSequence;
 
+	bool stopTime;
+
 	void Start () {
 		ResumeTime ();
 		SetWinItem ();
@@ -70,7 +72,8 @@ public class GameController : MonoBehaviour {
 						}
 
 						counter++;
-						//objPivot.GetComponent<Pivot> ().pivotOnSequence = true;
+						objPivot.GetComponent<Pivot> ().pivotOnSequence = true;
+						/*
 						listPosition.Sort ();
 						int currPosition = 1;
 						bool isOnSequence = false;;
@@ -84,6 +87,7 @@ public class GameController : MonoBehaviour {
 							currPosition++;
 						}
 						objPivot.GetComponent<Pivot> ().pivotOnSequence = isOnSequence;
+						*/
 					}
 				}
 			}
@@ -112,14 +116,16 @@ public class GameController : MonoBehaviour {
 
 	void HandleTime()
 	{
-		seconds =seconds-1;
-		if (seconds <= 0) {
-			seconds = 59;
-			minutes = minutes-1;
-		}
-		if (minutes < 0) {
-			LoseGame ();
-			timesUp = true;
+		if (!stopTime) {
+			seconds = seconds - 1;
+			if (seconds <= 0) {
+				seconds = 59;
+				minutes = minutes - 1;
+			}
+			if (minutes < 0) {
+				LoseGame ();
+				timesUp = true;
+			}
 		}
 
 	}
@@ -143,7 +149,7 @@ public class GameController : MonoBehaviour {
 
 	void SetWinItem()
 	{
-		Vector3 firePosition = new Vector3(-3, 5, 0);
+		Vector3 firePosition = new Vector3(3, 5, 0);
 		int index = Random.Range (0, ArrayItems.Length);
 		GameObject randomItem = ArrayItems [index];
 		GameObject bPrefab = Instantiate(randomItem, firePosition, Quaternion.identity) as GameObject;
@@ -159,6 +165,7 @@ public class GameController : MonoBehaviour {
 	public void WinGame(){
 		WinCanvas.gameObject.SetActive (true);
 		LoseCanvas.gameObject.SetActive (false);
+
 		StopTime ();
 	}
 
@@ -178,6 +185,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void StopTime(){
+		DropItem ();
+		stopTime = true;
 		//Time.timeScale = 0;
 	}
 
