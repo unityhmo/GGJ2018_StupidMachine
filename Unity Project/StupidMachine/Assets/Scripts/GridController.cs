@@ -57,16 +57,15 @@ public class GridController : MonoBehaviour {
 
 	void GenerateGrid()
 	{
-		numberOfColumns = currentLevel.blocks.Count / currentLevel.rowSize;
-		numberOfRows = currentLevel.rowSize;
+		numberOfRows = currentLevel.blocks.Count / currentLevel.rowSize;
+		numberOfColumns = currentLevel.rowSize;
 		int row = 0;
 		int column = 0;
 		int counter = 0;
 		Vector2 offset = currentLevel.offset != null ? currentLevel.offset : new Vector2(0, 0);
 
 		foreach (int valor in currentLevel.blocks) {
-			Vector3 spawnPosition =
-				new Vector3(row + currentLevel.offset.x * (0.5f), column + currentLevel.offset.y * (0.5f), 0);
+			Vector3 spawnPosition = new Vector3(row * 1.25f + currentLevel.offset.x, column * 1.25f + currentLevel.offset.y, 0);
 			row++;
 			if (row == numberOfColumns) {
 				row = 0;

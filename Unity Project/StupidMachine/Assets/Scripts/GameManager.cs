@@ -44,10 +44,10 @@ public class GameManager : MonoBehaviour
     {
         List<Level> levels = new List<Level>();
 
-        levels.Add(new Level(3, new List<int>(new int[] {0, 0, 4, 3, 3, 3, 1, 3, 3}), new Vector2(-2, 4)));
-        levels.Add(new Level(3, new List<int>(new int[] {3, 2, 3, 3, 3, 3, 1, 3, 4}), new Vector2(-2, 4)));
-        levels.Add(new Level(4, new List<int>(new int[] {3, 3, 3, 4, 3, 3, 3, 0, 1, 3, 3, 2}), new Vector2(-2, 5)));
-        levels.Add(new Level(3, new List<int>(new int[] {0, 2, 4, 0, 3, 3, 1, 3, 3}), new Vector2(-2, 4)));
+        levels.Add(new Level(3, new List<int>(new int[] {0, 0, 4, 3, 3, 3, 1, 3, 3}), new Vector2(-4f, 1.8f)));
+        levels.Add(new Level(3, new List<int>(new int[] {3, 2, 3, 3, 3, 3, 1, 3, 4}), new Vector2(-4f, 1.8f)));
+        levels.Add(new Level(4, new List<int>(new int[] {3, 3, 3, 4, 3, 3, 3, 0, 1, 3, 3, 2}), new Vector2(-4.8f, 1.8f)));
+        levels.Add(new Level(3, new List<int>(new int[] {0, 2, 4, 0, 3, 3, 1, 3, 3}), new Vector2(-4f, 1.8f)));
 
         return levels;
     }
